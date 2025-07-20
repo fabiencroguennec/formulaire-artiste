@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Formulaire Artiste</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 2rem;
+      background: #f9f9f9;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Formulaire artiste</h1>
+  <form id="artistForm">
+    <input type="text" name="nom" placeholder="Nom" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Message..."></textarea>
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <script>
+    const scriptURL = https://script.google.com/macros/s/AKfycbxDVzUmMYQNLMnzvZpbXrAYhOxbMoCqOjLQRxeZnNNB9wUZURHAUrEcMBPmlBSNFlTc/exec; // ← À remplacer par l'URL Web App Apps Script
+    const form = document.getElementById('artistForm');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(response => {
+        alert("✅ Envoi réussi !");
+        form.reset();
+      })
+      .catch(error => alert("❌ Erreur : " + error.message));
+    });
+  </script>
+</body>
+</html>
