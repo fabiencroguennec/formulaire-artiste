@@ -54,6 +54,9 @@
     <label for="montant_ht">Montant HT (€)</label>
     <input type="number" name="montant_ht" step="0.01" required>
 
+    <label for="montant_ttc">Montant TTC (€)</label>
+    <input type="number" name="montant_ttc" id="montant_ttc" readonly>
+
     <label for="facturation">Facturation ?</label>
     <select name="facturation" required>
       <option value="">-- Sélectionner --</option>
@@ -90,7 +93,7 @@
     <button type="submit">Envoyer</button>
   </form>
 
-  <script>
+  <script>//script link googlesheet
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxJwqgwsBA1-yyHYuXsJoRdBokggqwu71E9O3tOkfRDdZXcK3thz9PaZC88kKm_gpGY/exec'; // Remplace ceci par ton URL
     const form = document.getElementById('artistForm');
 
@@ -110,7 +113,7 @@
       });
     });
   </script>
-  <script>
+  <script>//script calcul de jour
   const dateDebutInput = document.querySelector('input[name="date_debut"]');
   const dateFinInput = document.querySelector('input[name="date_fin"]');
   const joursInput = document.getElementById('nombre_jours');
@@ -130,6 +133,23 @@
   dateDebutInput.addEventListener("change", calculerJours);
   dateFinInput.addEventListener("change", calculerJours);
 </script>
+<script>//script montant TTC
+  const montantHTInput = document.querySelector('input[name="montant_ht"]');
+  const montantTTCInput = document.getElementById('montant_ttc');
+
+  function calculerTTC() {
+    const ht = parseFloat(montantHTInput.value);
+    const tva = 0.21; // TVA à 21%
+    if (!isNaN(ht)) {
+      montantTTCInput.value = (ht * (1 + tva)).toFixed(2);
+    } else {
+      montantTTCInput.value = "";
+    }
+  }
+
+  montantHTInput.addEventListener("input", calculerTTC);
+</script>
+
 
 
 </body>
