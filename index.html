@@ -48,6 +48,9 @@
     <label for="date_fin">Date de fin</label>
     <input type="date" name="date_fin" required>
 
+    <label for="nombre_jours">Nombre de jours</label>
+    <input type="number" name="nombre_jours" id="nombre_jours" readonly>
+
     <label for="montant_ht">Montant HT (€)</label>
     <input type="number" name="montant_ht" step="0.01" required>
 
@@ -107,6 +110,27 @@
       });
     });
   </script>
+  <script>
+  const dateDebutInput = document.querySelector('input[name="date_debut"]');
+  const dateFinInput = document.querySelector('input[name="date_fin"]');
+  const joursInput = document.getElementById('nombre_jours');
+
+  function calculerJours() {
+    const debut = new Date(dateDebutInput.value);
+    const fin = new Date(dateFinInput.value);
+
+    if (dateDebutInput.value && dateFinInput.value && !isNaN(debut) && !isNaN(fin)) {
+      const diff = Math.ceil((fin - debut) / (1000 * 60 * 60 * 24)) + 1;
+      joursInput.value = diff > 0 ? diff : 0;
+    } else {
+      joursInput.value = "";
+    }
+  }
+
+  dateDebutInput.addEventListener("change", calculerJours);
+  dateFinInput.addEventListener("change", calculerJours);
+</script>
+
 
 </body>
 </html>
