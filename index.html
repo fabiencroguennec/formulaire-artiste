@@ -1,44 +1,94 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Formulaire Artiste</title>
+  <meta charset="UTF-8">
+  <title>Formulaire Statut Artiste</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
       padding: 2rem;
-      background: #f9f9f9;
+      background-color: #f9f9f9;
     }
-    input, textarea, button {
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select, textarea, button {
       width: 100%;
       padding: 0.5rem;
-      margin-bottom: 1rem;
+      margin-top: 0.3rem;
       font-size: 1rem;
+      box-sizing: border-box;
     }
     button {
-      background: #007bff;
+      background-color: #007bff;
       color: white;
       border: none;
+      margin-top: 1.5rem;
       cursor: pointer;
     }
     button:hover {
-      background: #0056b3;
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-  <h1>Formulaire artiste</h1>
+
+  <h1>Formulaire - Suivi des Contrats</h1>
   <form id="artistForm">
-    <input type="text" name="nom" placeholder="Nom" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <textarea name="message" placeholder="Message..."></textarea>
+    <label for="nom_du_projet">Nom du projet</label>
+    <input type="text" name="nom_du_projet" required>
+
+    <label for="date_debut">Date de début</label>
+    <input type="date" name="date_debut" required>
+
+    <label for="date_fin">Date de fin</label>
+    <input type="date" name="date_fin" required>
+
+    <label for="montant_ht">Montant HT (€)</label>
+    <input type="number" name="montant_ht" step="0.01" required>
+
+    <label for="facturation">Facturation ?</label>
+    <select name="facturation" required>
+      <option value="">-- Sélectionner --</option>
+      <option value="Oui">Oui</option>
+      <option value="Non">Non</option>
+    </select>
+
+    <label for="facture_avec">Facturé avec</label>
+    <input type="text" name="facture_avec">
+
+    <label for="lien_facture">Lien vers la facture</label>
+    <input type="url" name="lien_facture">
+
+    <label for="numero_contrat">N° Contrat</label>
+    <input type="text" name="numero_contrat">
+
+    <label for="lien_contrat">Lien vers le contrat</label>
+    <input type="url" name="lien_contrat">
+
+    <label for="organisme">Organisme</label>
+    <input type="text" name="organisme">
+
+    <label for="poste">Poste occupé</label>
+    <input type="text" name="poste">
+
+    <label for="paiement_effectue">Paiement effectué ?</label>
+    <select name="paiement_effectue" required>
+      <option value="">-- Sélectionner --</option>
+      <option value="Oui">Oui</option>
+      <option value="Partiel">Partiel</option>
+      <option value="Non">Non</option>
+    </select>
+
     <button type="submit">Envoyer</button>
   </form>
 
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxJwqgwsBA1-yyHYuXsJoRdBokggqwu71E9O3tOkfRDdZXcK3thz9PaZC88kKm_gpGY/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxJwqgwsBA1-yyHYuXsJoRdBokggqwu71E9O3tOkfRDdZXcK3thz9PaZC88kKm_gpGY/exec'; // Remplace ceci par ton URL
     const form = document.getElementById('artistForm');
 
     form.addEventListener('submit', e => {
@@ -48,11 +98,15 @@
         body: new FormData(form)
       })
       .then(response => {
-        alert("✅ Envoi réussi !");
+        alert("✅ Données envoyées !");
         form.reset();
       })
-      .catch(error => alert("❌ Erreur : " + error.message));
+      .catch(error => {
+        console.error("Erreur réseau : ", error);
+        alert("❌ Une erreur est survenue.");
+      });
     });
   </script>
+
 </body>
 </html>
