@@ -229,6 +229,21 @@
 
 	montantHTInput.addEventListener("input", calculerTTC);
 </script>
+<script>//script animation
+  const posteSelect = document.getElementById('poste');
+  const autreContainer = document.getElementById('autre-poste-container');
+  const inputAutre = document.getElementById('poste_autre');
+
+  posteSelect.addEventListener('change', () => {
+    if (posteSelect.value === 'Autre') {
+      autreContainer.classList.add('show');
+    } else {
+      autreContainer.classList.remove('show');
+      inputAutre.value = ''; // Réinitialise le champ si caché
+    }
+  });
+</script>
+
 
 
 
