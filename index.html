@@ -1,274 +1,240 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<meta charset="UTF-8">
-	<title>Formulaire Statut Artiste</title>
-	<style>
-		* {
-			box-sizing: border-box;
-		}
-
-		body {
-			margin: 0;
-			font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-			background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-			min-height: 100vh;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 2rem;
-			color: #f1f1f1;
-		}
-
-		form {
-			background: rgba(30, 30, 30, 0.6);
-			backdrop-filter: blur(10px);
-			border-radius: 16px;
-			padding: 2rem;
-			width: 100%;
-			max-width: 600px;
-			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-		}
-		.form-row {
-      margin-bottom: 0.2rem;
-      display: flex;
-      flex-direction: column;
+  <meta charset="UTF-8" />
+  <title>Formulaire Artiste</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(to right, #1e1e2f, #2c2c3e);
+      color: #f1f1f1;
+      max-width: 700px;
+      margin: auto;
+      padding: 2rem;
     }
 
-		h1 {
-			text-align: center;
-			margin-bottom: 2rem;
-			color: #ffffff;
-			font-size: 1.8rem;
-		}
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #ffffff;
+    }
 
-		label {
-			display: block;
-			margin-bottom: 0.4rem;
-			margin-top: 1rem;
-			font-weight: 500;
-			color: #dddddd;
-		}
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 500;
+    }
 
-		input, select, textarea {
-			width: 100%;
-			padding: 0.7rem;
-			font-size: 1rem;
-			border-radius: 10px;
-			border: 1px solid #444;
-			background: #1e1e1e;
-			color: #f1f1f1;
-			transition: border 0.2s ease;
-		}
+    input, select, textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border: 1px solid #555;
+      border-radius: 6px;
+      background: #2a2a3a;
+      color: #f1f1f1;
+      font-size: 1rem;
+    }
 
-		input:focus, select:focus, textarea:focus {
-			border-color: #00bfff;
-			outline: none;
-		}
-		.two-columns {
+    .row {
       display: flex;
       gap: 1rem;
     }
 
-   .two-columns .form-row {
+    .row > div {
       flex: 1;
     }
 
-		button {
-			margin-top: 2rem;
-			background: #00bfff;
-			color: white;
-			border: none;
-			padding: 0.9rem;
-			font-size: 1.1rem;
-			border-radius: 12px;
-			width: 100%;
-			cursor: pointer;
-			transition: background 0.3s ease;
-		}
+    button {
+      margin-top: 2rem;
+      padding: 0.8rem;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
 
-		button:hover {
-			background: #009fd6;
-		}
-		
-		.champ-transition {
-  		max-height: 0;
-  		overflow: hidden;
-  		opacity: 0;
-  		transition: max-height 0.4s ease, opacity 0.4s ease;
-		}
+    button:hover {
+      background: #45a049;
+    }
 
-		.champ-transition.show {
-  		max-height: 200px; /* suffisamment grand pour contenir l'élément */
-  		opacity: 1;
-  		margin-top: 1rem;
-		}
+    .error {
+      color: #ff6b6b;
+      font-size: 0.9rem;
+      margin-top: 0.3rem;
+    }
 
-		@media (max-width: 600px) {
-			form {
-				padding: 1.5rem;
-			}
-		}
-	</style>
+    .champ-transition {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.5s ease, max-height 0.5s ease;
+    }
+
+    .champ-transition.show {
+      opacity: 1;
+      max-height: 100px;
+    }
+  </style>
 </head>
 <body>
+  <h1>Formulaire Artiste</h1>
+  <form id="artistForm">
+    <label for="nom">Nom</label>
+    <input type="text" name="nom" id="nom" required>
 
-	<form id="artistForm">
-		<div class="form-row">
-			<h1>Contrat Artiste</h1>
-		</div>
-			<div class="form-row">
-				<label for="nom_du_projet">Nom du projet</label>
-				<input type="text" name="nom_du_projet" required>
-			</div>
-		<div class="two-columns">
-      <div class="form-row">
-        <label for="debut">Date de début</label>
-        <input type="date" id="debut" name="debut">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required>
+
+    <label for="datedebut">Dates</label>
+    <div class="row">
+      <div>
+        <input type="date" name="datedebut" id="datedebut" required>
       </div>
-      <div class="form-row">
-        <label for="fin">Date de fin</label>
-        <input type="date" id="fin" name="fin">
+      <div>
+        <input type="date" name="datefin" id="datefin" required>
       </div>
     </div>
-		<div class="form-row">
-			<label for="nombre_jours">Nombre de jours</label>
-			<input type="number" name="nombre_jours" id="nombre_jours" readonly>
-		</div>
-		<div class="form-row">
-			<label for="montant_ht">Montant HT (€)</label>
-			<input type="number" name="montant_ht" step="0.01" required>
-		</div>
-		<div class="form-row">
-			<label for="montant_ttc">Montant TTC (€)</label>
-			<input type="number" name="montant_ttc" id="montant_ttc" readonly>
-		</div>
-		<div class="form-row">
-			<label for="facturation">Facturation ?</label>
-			<select name="facturation" required>
-				<option value="">-- Sélectionner --</option>
-				<option value="Oui">Oui</option>
-				<option value="Non">Non</option>
-			</select>
-		</div>
-		<div class="form-row">
-			<label for="facture_avec">Facturé avec</label>
-			<input type="text" name="facture_avec">
-		</div>
-		<div class="form-row">
-			<label for="lien_facture">Lien vers la facture</label>
-			<input type="url" name="lien_facture">
-		</div>
-		<div class="form-row">
-			<label for="numero_contrat">N° Contrat</label>
-			<input type="text" name="numero_contrat">
-		</div>
-		<div class="form-row">
-			<label for="lien_contrat">Lien vers le contrat</label>
-			<input type="url" name="lien_contrat">
-		</div>
-		<div class="form-row">
-			<label for="organisme">Organisme</label>
-			<input type="text" name="organisme">
-		</div>
-		<div class="form-row">
-			<label for="poste">Poste occupé</label>
-				<select name="poste" required>
-					<option value="">-- Sélectionner --</option>
-					<option value="Oui">Chef op</option>
-					<option value="Non">VFX</option>
-					<option value="Non">Motion design</option>
-					<option value="Non">Electro</option>
-					<option value="Non">Machino</option>
-					<option value="Non">Autre</option>
-				</select>
-			</div>
-			<div id="autre-poste-container" class="champ-transition">
-	    	<label for="poste_autre">Précisez le poste</label>
-	    	<input type="text" id="poste_autre" name="poste_autre" placeholder="Ex: Scénographe" />
-	  	</div>
-	  	<div class="form-row">
-				<label for="paiement_effectue">Paiement effectué ?</label>
-					<select name="paiement_effectue" required>
-						<option value="">-- Sélectionner --</option>
-						<option value="Oui">Oui</option>
-						<option value="Partiel">Partiel</option>
-						<option value="Non">Non</option>
-					</select>
-				</div>
+    <div id="dateError" class="error"></div>
 
-		<button type="submit">Envoyer</button>
-	</form>
+    <label for="jours">Nombre de jours</label>
+    <input type="text" id="jours" name="jours" readonly>
 
-	<script>//script link googlesheet
-		const scriptURL = 'https://script.google.com/macros/s/AKfycbxJwqgwsBA1-yyHYuXsJoRdBokggqwu71E9O3tOkfRDdZXcK3thz9PaZC88kKm_gpGY/exec'; // Remplace ceci par ton URL
-		const form = document.getElementById('artistForm');
+    <label for="montant">Montant HT</label>
+    <input type="number" id="montant" name="montant" required>
 
-		form.addEventListener('submit', e => {
-			e.preventDefault();
-			fetch(scriptURL, {
-				method: 'POST',
-				body: new FormData(form)
-			})
-			.then(response => {
-				alert("✅ Données envoyées !");
-				form.reset();
-			})
-			.catch(error => {
-				console.error("Erreur réseau : ", error);
-				alert("❌ Une erreur est survenue.");
-			});
-		});
-	</script>
-	<script> //script calcul de jour
-		const dateDebutInput = document.querySelector('input[name="date_debut"]');
-		const dateFinInput = document.querySelector('input[name="date_fin"]');
-		const joursInput = document.getElementById('nombre_jours');
+    <label for="ttc">Montant TTC (20%)</label>
+    <input type="text" id="ttc" name="ttc" readonly>
 
-		function calculerJours() {
-			const debut = new Date(dateDebutInput.value);
-			const fin = new Date(dateFinInput.value);
+    <label for="poste">Poste occupé</label>
+    <select name="poste" id="poste" required>
+      <option value="">-- Choisir --</option>
+      <option value="Musicien">Musicien</option>
+      <option value="Danseur">Danseur</option>
+      <option value="Technicien">Technicien</option>
+      <option value="Autre">Autre</option>
+    </select>
 
-			if (dateDebutInput.value && dateFinInput.value && !isNaN(debut) && !isNaN(fin)) {
-				const diff = Math.ceil((fin - debut) / (1000 * 60 * 60 * 24)) + 1;
-				joursInput.value = diff > 0 ? diff : 0;
-			} else {
-				joursInput.value = "";
-			}
-		}
+    <div id="autre-poste-wrapper" class="champ-transition">
+      <input type="text" id="autre-poste" name="autre-poste" placeholder="Précisez le poste">
+    </div>
 
-		dateDebutInput.addEventListener("change", calculerJours);
-		dateFinInput.addEventListener("change", calculerJours);
-</script>
-<script>//script montant TTC
-	const montantHTInput = document.querySelector('input[name="montant_ht"]');
-	const montantTTCInput = document.getElementById('montant_ttc');
+    <label for="facturation">Facturation ?</label>
+      <select name="facturation" required>
+        <option value="">-- Sélectionner --</option>
+        <option value="Oui">Oui</option>
+        <option value="Non">Non</option>
+      </select>
 
-	function calculerTTC() {
-		const ht = parseFloat(montantHTInput.value);
-		const tva = 0.21; // TVA à 21%
-		if (!isNaN(ht)) {
-			montantTTCInput.value = (ht * (1 + tva)).toFixed(2);
-		} else {
-			montantTTCInput.value = "";
-		}
-	}
+    <label for="facture_avec">Facturé avec</label>
+      <select name="facture_avec" required>
+        <option value="">-- Sélectionner --</option>
+        <option value="Oui">SMART</option>
+        <option value="Non">Green Shot</option>
+        <option value="Non">Indépendant</option>
+      </select>
 
-	montantHTInput.addEventListener("input", calculerTTC);
-</script>
-<script>//script "poste autre"
-  const posteSelect = document.getElementById('poste');
-  const autreContainer = document.getElementById('autre-poste-container');
-  const inputAutre = document.getElementById('poste_autre');
+    <label for="lien_facture">Lien vers la facture</label>
+      <input type="url" name="lien_facture">
 
-  posteSelect.addEventListener('change', () => {
-    if (posteSelect.value === 'Autre') {
-      autreContainer.classList.add('show');
-    } else {
-      autreContainer.classList.remove('show');
-      inputAutre.value = ''; // Réinitialise le champ si caché
+    <label for="numero_contrat">N° Contrat</label>
+      <input type="text" name="numero_contrat">
+
+    <label for="lien_contrat">Lien vers le contrat</label>
+      <input type="url" name="lien_contrat">
+
+    <label for="organisme">Organisme</label>
+      <input type="text" name="organisme">
+
+    <label for="paiement_effectue">Paiement effectué ?</label>
+      <select name="paiement_effectue" required>
+        <option value="">-- Sélectionner --</option>
+        <option value="Oui">Oui</option>
+        <option value="Partiel">Partiel</option>
+        <option value="Non">Non</option>
+      </select>
+
+    <label for="message">Message</label>
+    <textarea name="message" id="message" rows="4" placeholder="Commentaires éventuels..."></textarea>
+
+    <button type="submit">Envoyer</button>
+  </form>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // à remplacer
+    const form = document.getElementById('artistForm');
+    const datedebut = document.getElementById('datedebut');
+    const datefin = document.getElementById('datefin');
+    const jours = document.getElementById('jours');
+    const montant = document.getElementById('montant');
+    const ttc = document.getElementById('ttc');
+    const dateError = document.getElementById('dateError');
+
+    // Poste dynamique
+    const posteSelect = document.getElementById('poste');
+    const autreContainer = document.getElementById('autre-poste-wrapper');
+    const inputAutre = document.getElementById('autre-poste');
+
+    posteSelect.addEventListener('change', () => {
+      if (posteSelect.value === 'Autre') {
+        autreContainer.classList.add('show');
+      } else {
+        autreContainer.classList.remove('show');
+        inputAutre.value = '';
+      }
+    });
+
+    // Calcul jours et TTC
+    function updateCalculs() {
+      const debut = new Date(datedebut.value);
+      const fin = new Date(datefin.value);
+
+      if (datedebut.value && datefin.value) {
+        if (fin < debut) {
+          dateError.textContent = "La date de fin doit être après la date de début.";
+          jours.value = '';
+          return;
+        } else {
+          dateError.textContent = "";
+        }
+
+        const diffTime = Math.abs(fin - debut);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+        jours.value = diffDays;
+      }
+
+      if (montant.value) {
+        const ttcValue = parseFloat(montant.value) * 1.2;
+        ttc.value = ttcValue.toFixed(2);
+      }
     }
-  });
-</script>
+
+    datedebut.addEventListener('change', updateCalculs);
+    datefin.addEventListener('change', updateCalculs);
+    montant.addEventListener('input', updateCalculs);
+
+    // Envoi du formulaire
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxJwqgwsBA1-yyHYuXsJoRdBokggqwu71E9O3tOkfRDdZXcK3thz9PaZC88kKm_gpGY/exec'; // Remplace ceci par ton URL
+    const form = document.getElementById('artistForm');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(response => {
+        alert("✅ Données envoyées !");
+        form.reset();
+      })
+      .catch(error => {
+        console.error("Erreur réseau : ", error);
+        alert("❌ Une erreur est survenue.");
+      });
+    });
+  </script>
 </body>
 </html>
