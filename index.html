@@ -4,86 +4,86 @@
 	<meta charset="UTF-8">
 	<title>Formulaire Statut Artiste</title>
 	<style>
-	* {
-		box-sizing: border-box;
-	}
-
-	body {
-		margin: 0;
-		font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
-		background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-		min-height: 100vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 2rem;
-		color: #f1f1f1;
-	}
-
-	form {
-		background: rgba(30, 30, 30, 0.6);
-		backdrop-filter: blur(10px);
-		border-radius: 16px;
-		padding: 2rem;
-		width: 100%;
-		max-width: 600px;
-		box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-	}
-
-	h1 {
-		text-align: center;
-		margin-bottom: 2rem;
-		color: #ffffff;
-		font-size: 1.8rem;
-	}
-
-	label {
-		display: block;
-		margin-bottom: 0.4rem;
-		margin-top: 1rem;
-		font-weight: 500;
-		color: #dddddd;
-	}
-
-	input, select, textarea {
-		width: 100%;
-		padding: 0.7rem;
-		font-size: 1rem;
-		border-radius: 10px;
-		border: 1px solid #444;
-		background: #1e1e1e;
-		color: #f1f1f1;
-		transition: border 0.2s ease;
-	}
-
-	input:focus, select:focus, textarea:focus {
-		border-color: #00bfff;
-		outline: none;
-	}
-
-	button {
-		margin-top: 2rem;
-		background: #00bfff;
-		color: white;
-		border: none;
-		padding: 0.9rem;
-		font-size: 1.1rem;
-		border-radius: 12px;
-		width: 100%;
-		cursor: pointer;
-		transition: background 0.3s ease;
-	}
-
-	button:hover {
-		background: #009fd6;
-	}
-
-	@media (max-width: 600px) {
-		form {
-			padding: 1.5rem;
+		* {
+			box-sizing: border-box;
 		}
-	}
-</style>
+
+		body {
+			margin: 0;
+			font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+			background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 2rem;
+			color: #f1f1f1;
+		}
+
+		form {
+			background: rgba(30, 30, 30, 0.6);
+			backdrop-filter: blur(10px);
+			border-radius: 16px;
+			padding: 2rem;
+			width: 100%;
+			max-width: 600px;
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 2rem;
+			color: #ffffff;
+			font-size: 1.8rem;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 0.4rem;
+			margin-top: 1rem;
+			font-weight: 500;
+			color: #dddddd;
+		}
+
+		input, select, textarea {
+			width: 100%;
+			padding: 0.7rem;
+			font-size: 1rem;
+			border-radius: 10px;
+			border: 1px solid #444;
+			background: #1e1e1e;
+			color: #f1f1f1;
+			transition: border 0.2s ease;
+		}
+
+		input:focus, select:focus, textarea:focus {
+			border-color: #00bfff;
+			outline: none;
+		}
+
+		button {
+			margin-top: 2rem;
+			background: #00bfff;
+			color: white;
+			border: none;
+			padding: 0.9rem;
+			font-size: 1.1rem;
+			border-radius: 12px;
+			width: 100%;
+			cursor: pointer;
+			transition: background 0.3s ease;
+		}
+
+		button:hover {
+			background: #009fd6;
+		}
+
+		@media (max-width: 600px) {
+			form {
+				padding: 1.5rem;
+			}
+		}
+	</style>
 </head>
 <body>
 
@@ -136,15 +136,27 @@
 		<input type="text" name="organisme">
 
 		<label for="poste">Poste occupé</label>
-		<input type="text" name="poste">
+			<select name="poste" required>
+				<option value="">-- Sélectionner --</option>
+				<option value="Oui">Chef op</option>
+				<option value="Non">VFX</option>
+				<option value="Non">Motion design</option>
+				<option value="Non">Electro</option>
+				<option value="Non">Machino</option>
+				<option value="Non">Autre</option>
+			</select>
+			<div id="autre-poste-container" style="display: none; margin-top: 1rem;">
+	    	<label for="poste_autre">Précisez le poste</label>
+	    	<input type="text" id="poste_autre" name="poste_autre" placeholder="Ex: Scénographe" />
+	  	</div>
 
 		<label for="paiement_effectue">Paiement effectué ?</label>
-		<select name="paiement_effectue" required>
-			<option value="">-- Sélectionner --</option>
-			<option value="Oui">Oui</option>
-			<option value="Partiel">Partiel</option>
-			<option value="Non">Non</option>
-		</select>
+			<select name="paiement_effectue" required>
+				<option value="">-- Sélectionner --</option>
+				<option value="Oui">Oui</option>
+				<option value="Partiel">Partiel</option>
+				<option value="Non">Non</option>
+			</select>
 
 		<button type="submit">Envoyer</button>
 	</form>
