@@ -30,7 +30,7 @@
 			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 		}
 		.form-row {
-      margin-bottom: 1.2rem;
+      margin-bottom: 0.2rem;
       display: flex;
       flex-direction: column;
     }
@@ -70,7 +70,6 @@
       gap: 1rem;
     }
 
-    /
    .two-columns .form-row {
       flex: 1;
     }
@@ -91,24 +90,25 @@
 		button:hover {
 			background: #009fd6;
 		}
+		
+		.champ-transition {
+  		max-height: 0;
+  		overflow: hidden;
+  		opacity: 0;
+  		transition: max-height 0.4s ease, opacity 0.4s ease;
+		}
+
+		.champ-transition.show {
+  		max-height: 200px; /* suffisamment grand pour contenir l'élément */
+  		opacity: 1;
+  		margin-top: 1rem;
+		}
 
 		@media (max-width: 600px) {
 			form {
 				padding: 1.5rem;
 			}
 		}
-		.champ-transition {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
-}
-
-.champ-transition.show {
-  max-height: 200px; /* suffisamment grand pour contenir l'élément */
-  opacity: 1;
-  margin-top: 1rem;
-}
 	</style>
 </head>
 <body>
@@ -131,8 +131,6 @@
         <input type="date" id="fin" name="fin">
       </div>
     </div>
-
-
 		<div class="form-row">
 			<label for="nombre_jours">Nombre de jours</label>
 			<input type="number" name="nombre_jours" id="nombre_jours" readonly>
@@ -258,7 +256,7 @@
 
 	montantHTInput.addEventListener("input", calculerTTC);
 </script>
-<script>//script animation
+<script>//script "poste autre"
   const posteSelect = document.getElementById('poste');
   const autreContainer = document.getElementById('autre-poste-container');
   const inputAutre = document.getElementById('poste_autre');
@@ -272,9 +270,5 @@
     }
   });
 </script>
-
-
-
-
 </body>
 </html>
