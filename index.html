@@ -29,6 +29,11 @@
 			max-width: 600px;
 			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 		}
+		.form-row {
+      margin-bottom: 1.2rem;
+      display: flex;
+      flex-direction: column;
+    }
 
 		h1 {
 			text-align: center;
@@ -60,6 +65,15 @@
 			border-color: #00bfff;
 			outline: none;
 		}
+		.two-columns {
+      display: flex;
+      gap: 1rem;
+    }
+
+    /
+   .two-columns .form-row {
+      flex: 1;
+    }
 
 		button {
 			margin-top: 2rem;
@@ -100,75 +114,90 @@
 <body>
 
 	<form id="artistForm">
-		<h1>Contrat Artiste</h1>
-		<label for="nom_du_projet">Nom du projet</label>
-		<input type="text" name="nom_du_projet" required>
-
-		<div class="row">
-		  <div class="column">
-		    <label for="date_debut">Date de début</label>
-		    <input type="date" id="date_debut" name="date_debut">
-		  </div>
-		  <div class="column">
-		    <label for="date_fin">Date de fin</label>
-		    <input type="date" id="date_fin" name="date_fin">
-		  </div>
+		<div class="form-row">
+			<h1>Contrat Artiste</h1>
 		</div>
+			<div class="form-row">
+				<label for="nom_du_projet">Nom du projet</label>
+				<input type="text" name="nom_du_projet" required>
+			</div>
+		<div class="two-columns">
+      <div class="form-row">
+        <label for="debut">Date de début</label>
+        <input type="date" id="debut" name="debut">
+      </div>
+      <div class="form-row">
+        <label for="fin">Date de fin</label>
+        <input type="date" id="fin" name="fin">
+      </div>
+    </div>
 
 
-		<label for="nombre_jours">Nombre de jours</label>
-		<input type="number" name="nombre_jours" id="nombre_jours" readonly>
-
-		<label for="montant_ht">Montant HT (€)</label>
-		<input type="number" name="montant_ht" step="0.01" required>
-
-		<label for="montant_ttc">Montant TTC (€)</label>
-		<input type="number" name="montant_ttc" id="montant_ttc" readonly>
-
-		<label for="facturation">Facturation ?</label>
-		<select name="facturation" required>
-			<option value="">-- Sélectionner --</option>
-			<option value="Oui">Oui</option>
-			<option value="Non">Non</option>
-		</select>
-
-		<label for="facture_avec">Facturé avec</label>
-		<input type="text" name="facture_avec">
-
-		<label for="lien_facture">Lien vers la facture</label>
-		<input type="url" name="lien_facture">
-
-		<label for="numero_contrat">N° Contrat</label>
-		<input type="text" name="numero_contrat">
-
-		<label for="lien_contrat">Lien vers le contrat</label>
-		<input type="url" name="lien_contrat">
-
-		<label for="organisme">Organisme</label>
-		<input type="text" name="organisme">
-
-		<label for="poste">Poste occupé</label>
-			<select name="poste" required>
+		<div class="form-row">
+			<label for="nombre_jours">Nombre de jours</label>
+			<input type="number" name="nombre_jours" id="nombre_jours" readonly>
+		</div>
+		<div class="form-row">
+			<label for="montant_ht">Montant HT (€)</label>
+			<input type="number" name="montant_ht" step="0.01" required>
+		</div>
+		<div class="form-row">
+			<label for="montant_ttc">Montant TTC (€)</label>
+			<input type="number" name="montant_ttc" id="montant_ttc" readonly>
+		</div>
+		<div class="form-row">
+			<label for="facturation">Facturation ?</label>
+			<select name="facturation" required>
 				<option value="">-- Sélectionner --</option>
-				<option value="Oui">Chef op</option>
-				<option value="Non">VFX</option>
-				<option value="Non">Motion design</option>
-				<option value="Non">Electro</option>
-				<option value="Non">Machino</option>
-				<option value="Non">Autre</option>
+				<option value="Oui">Oui</option>
+				<option value="Non">Non</option>
 			</select>
+		</div>
+		<div class="form-row">
+			<label for="facture_avec">Facturé avec</label>
+			<input type="text" name="facture_avec">
+		</div>
+		<div class="form-row">
+			<label for="lien_facture">Lien vers la facture</label>
+			<input type="url" name="lien_facture">
+		</div>
+		<div class="form-row">
+			<label for="numero_contrat">N° Contrat</label>
+			<input type="text" name="numero_contrat">
+		</div>
+		<div class="form-row">
+			<label for="lien_contrat">Lien vers le contrat</label>
+			<input type="url" name="lien_contrat">
+		</div>
+		<div class="form-row">
+			<label for="organisme">Organisme</label>
+			<input type="text" name="organisme">
+		</div>
+		<div class="form-row">
+			<label for="poste">Poste occupé</label>
+				<select name="poste" required>
+					<option value="">-- Sélectionner --</option>
+					<option value="Oui">Chef op</option>
+					<option value="Non">VFX</option>
+					<option value="Non">Motion design</option>
+					<option value="Non">Electro</option>
+					<option value="Non">Machino</option>
+					<option value="Non">Autre</option>
+				</select>
+			</div>
 			<div id="autre-poste-container" class="champ-transition">
 	    	<label for="poste_autre">Précisez le poste</label>
 	    	<input type="text" id="poste_autre" name="poste_autre" placeholder="Ex: Scénographe" />
 	  	</div>
-
-		<label for="paiement_effectue">Paiement effectué ?</label>
-			<select name="paiement_effectue" required>
-				<option value="">-- Sélectionner --</option>
-				<option value="Oui">Oui</option>
-				<option value="Partiel">Partiel</option>
-				<option value="Non">Non</option>
-			</select>
+	  	<div class="form-row">
+				<label for="paiement_effectue">Paiement effectué ?</label>
+					<select name="paiement_effectue" required>
+						<option value="">-- Sélectionner --</option>
+						<option value="Oui">Oui</option>
+						<option value="Partiel">Partiel</option>
+						<option value="Non">Non</option>
+					</select>
+				</div>
 
 		<button type="submit">Envoyer</button>
 	</form>
