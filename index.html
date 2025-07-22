@@ -83,6 +83,18 @@
 				padding: 1.5rem;
 			}
 		}
+		.champ-transition {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.champ-transition.show {
+  max-height: 200px; /* suffisamment grand pour contenir l'élément */
+  opacity: 1;
+  margin-top: 1rem;
+}
 	</style>
 </head>
 <body>
@@ -145,7 +157,7 @@
 				<option value="Non">Machino</option>
 				<option value="Non">Autre</option>
 			</select>
-			<div id="autre-poste-container" style="display: none; margin-top: 1rem;">
+			<div id="autre-poste-container" class="champ-transition">
 	    	<label for="poste_autre">Précisez le poste</label>
 	    	<input type="text" id="poste_autre" name="poste_autre" placeholder="Ex: Scénographe" />
 	  	</div>
